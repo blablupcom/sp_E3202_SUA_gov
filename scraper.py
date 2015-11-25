@@ -97,12 +97,11 @@ soup = BeautifulSoup(html, 'lxml')
 
 #### SCRAPE DATA
 import requests
+
 block = soup.find('div', attrs = {'class':'navigation'}).find('ul').find('ul').find('ul')
 links = block.find_all('a')
 for link in links:
      link_csv = 'http://www.shropshire.gov.uk' +link['href'].encode('utf-8')
-    #  html_csv = urllib2.urlopen(link_csv)
-    #  soup_csv = BeautifulSoup(html_csv, 'lxml')
      html_csv = requests.get(link_csv)
      soup_csv = BeautifulSoup(html_csv.text, 'lxml')
      block_csv = soup_csv.find('div', attrs = {'class':'content'}).find('ul', 'attachments')
