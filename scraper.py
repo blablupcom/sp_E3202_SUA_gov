@@ -111,10 +111,10 @@ for link in links:
              url = 'http://www.shropshire.gov.uk' + url_csv['href'].encode('utf-8')
              csvfiles = url_csv.text
              try:
-                 csvMth = csvfiles.split('-')[2].replace('.csv', '').strip()
+                 csvMth = csvfiles.split('-')[2].replace('.csv', '').strip()[:3]
                  csvYr = csvfiles.split('-')[1].strip()
              except:
-                  csvMth = csvfiles.split()[1].strip()
+                  csvMth = csvfiles.split()[1].strip()[:3]
                   csvYr = csvfiles.split()[2].replace('.csv', '').strip()
              csvMth = convert_mth_strings(csvMth.upper())
              data.append([csvYr, csvMth, url])
